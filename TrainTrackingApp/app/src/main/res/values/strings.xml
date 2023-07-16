@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TrainTrackingApp</string>
+    <string name="id">ID</string>
+    <string name="modifytime">modifyTime</string>
+    <string name="brake_state">brake State</string>
+    <string name="id_name">ID_Name:</string>
+    <string name="textview">TextView</string>
+    <string name="modify_time">Modify Time</string>
+    <string name="idview">IDView</string>
+    <string name="train_db_id">TRAIN DB ID</string>
+    <string name="brake_status">Brake Status</string>
+    <string name="dateview">DateView</string>
+    <string name="brakeview">BrakeView</string>
+    <string name="train_id">Train_ID</string>
+    <string name="train_id_name">Train ID Name</string>
+    <string name="update_time">Update Time:</string>
+    <string name="update_data_time">Update Data Time</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1031505414845",
+    "project_id": "traintrackingapp",
+    "storage_bucket": "traintrackingapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031505414845:android:9c5466870809589f7045d4",
+        "android_client_info": {
+          "package_name": "com.melih.traintrackingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031505414845-h52gh01bcn07pnvo9chq7v8n28gcsqav.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiZKaEBIh9CLQa9NBtL7T2Em3vCwZQA_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031505414845-h52gh01bcn07pnvo9chq7v8n28gcsqav.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
