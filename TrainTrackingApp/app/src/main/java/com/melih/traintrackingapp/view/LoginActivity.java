@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, CardActivity.class));
                     finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /*
     // Sign up Text Operations
     public void signClicked(View view) {
 
@@ -96,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {                   // Login is success
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, CardActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -110,10 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
-
-
-
-
-
     }
+
+     */
 }

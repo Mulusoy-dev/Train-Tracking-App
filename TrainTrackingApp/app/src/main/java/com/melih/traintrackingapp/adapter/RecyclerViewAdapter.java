@@ -1,6 +1,6 @@
 package com.melih.traintrackingapp.adapter;
 
-import android.graphics.Color;
+
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -52,7 +52,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView text_id;
         TextView text_date;
 
+        TextView text_emergency;
+
+        TextView text_pan_upp;
+
+        TextView text_pan_dwn;
+
+        TextView text_total_km;
+
+        TextView text_pf12_pan_narr;
+
+        TextView text_pf40_ext_temp;
+
         TextView text_brake;
+
+
         public RowHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -63,11 +77,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             //itemView.setBackgroundColor(Color.parseColor(colors[position % 8]));
             text_id = itemView.findViewById(R.id.text_id);
             text_date = itemView.findViewById(R.id.text_date);
-            //text_brake = itemView.findViewById(R.id.text_brake);
+            text_brake = itemView.findViewById(R.id.text_brake);
+            text_emergency = itemView.findViewById(R.id.text_emergency);
+            text_pan_upp = itemView.findViewById(R.id.text_pan_upp);
+            text_total_km = itemView.findViewById(R.id.text_total_km);
+            text_pf12_pan_narr = itemView.findViewById(R.id.text_pf12_pan_narr);
+            text_pf40_ext_temp = itemView.findViewById(R.id.text_pf40_ext_temp);
+            text_pan_dwn = itemView.findViewById(R.id.text_pan_dwn);
 
             text_id.setText(trainModel._id);
             text_date.setText(trainModel.modifyTime);
-            //text_brake.setText(trainModel.plcParams.PLC_MC_BRAKE);
+            text_brake.setText(trainModel.plcParams.PLC_MC_BRAKE);
+            text_emergency.setText(trainModel.plcParams.PLC_MC_EMERGENCY);
+            text_pan_upp.setText(trainModel.plcProcess.PF12_PAN_UP);
+            text_total_km.setText(trainModel.recC1Misc.V1_TotalKM);
+            text_pf12_pan_narr.setText(trainModel.plcProcess.PF12_PAN_NARR);
+            text_pf40_ext_temp.setText(trainModel.plcProcess.PF40_EXT_TEMP);
+            text_pan_dwn.setText(trainModel.plcProcess.PF12_PAN_DWN);
 
         }
     }

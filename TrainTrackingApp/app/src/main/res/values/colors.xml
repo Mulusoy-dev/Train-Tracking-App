@@ -9,6 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="textColor">#000000</color>
     <color name="layoutBg">#F2E7FE</color>
-    <color name="card">#9681EB</color>
+    <color name="card">#000028</color>
     <color name="main_bg">#F9FBE7</color>
 </resources>

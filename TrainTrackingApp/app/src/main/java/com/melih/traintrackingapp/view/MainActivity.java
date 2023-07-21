@@ -17,16 +17,21 @@ import com.melih.traintrackingapp.adapter.RecyclerViewAdapter;
 import com.melih.traintrackingapp.model.TrainModel;
 import com.melih.traintrackingapp.service.TrainAPI;
 
-import org.checkerframework.checker.units.qual.A;
+
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
+import io.reactivex.Flowable;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
+
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
@@ -37,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
     Retrofit retrofit;
     RecyclerView recyclerView;
     RecyclerViewAdapter recyclerViewAdapter;
+
+
+    // RxJava CompositeDisposable tanımlama
+    // Call 'ların bir süre sonra hafızadan silinmesi gerekir çünkü hafızayı daha verimli kullanılmasını istiyoruz.
+    CompositeDisposable compositeDisposable;
+
 
     private FirebaseAuth mAuth;
 
@@ -63,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -72,7 +84,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData() {
         // Servis oluşturuldu
-        TrainAPI trainAPI = retrofit.create(TrainAPI.class);
+        final TrainAPI trainAPI = retrofit.create(TrainAPI.class);
+
+        compositeDisposable = new CompositeDisposable();
+
+        compositeDisposable.add(Observable.interval(0, 10, TimeUnit.SECONDS)
+                .flatMap(aLong -> trainAPI.getData())
+                .subscribeOn(Schedulers.io())                                // Hangi thread'de kayıt olma işleminin yapılacağını belirtilir.
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleResponse, throwable -> {
+                    throwable.printStackTrace();
+                }));                                               // Ele alma metodu
+
+        /*
+
 
         // Verileri 'Call' metodu ile çekiyoruz. Başka metotlarda var.
         Call<List<TrainModel>> call = trainAPI.getData();
@@ -93,18 +118,6 @@ public class MainActivity extends AppCompatActivity {
                     recyclerView.setAdapter(recyclerViewAdapter);
 
 
-
-
-                    //for (TrainModel trainModel: trainModels) {
-                    //    System.out.println(trainModel.modifyTime);
-                    //    System.out.println(trainModel._id);
-                    //    System.out.println(trainModel.plcParams.PLC_MC_EMERGENCY);
-                    //    System.out.println(trainModel.plcParams.PLC_MC_BRAKE);
-                    //    System.out.println(trainModel.plcParams.PLC_MC_TRACTION);
-
-                    //}
-
-
                 }
             }
 
@@ -115,9 +128,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+         */
+
     }
 
 
+    private void handleResponse(List<TrainModel> trainModelList) {
 
 
+        // Başta tanımlanan 'trainModels' burada tanımlanır.
+        trainModels = new ArrayList<>(trainModelList);
+
+        // RecyclerView işlemleri
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        recyclerViewAdapter = new RecyclerViewAdapter(trainModels);
+        recyclerView.setAdapter(recyclerViewAdapter);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        compositeDisposable.clear();
+    }
 }

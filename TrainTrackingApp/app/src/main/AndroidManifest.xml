@@ -9,10 +9,25 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label=""
         android:supportsRtl="true"
         android:theme="@style/Theme.TrainTrackingApp"
         tools:targetApi="31">
+        <activity
+            android:name=".scroll"
+            android:exported="false" />
+        <activity
+            android:name=".view.SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.CardActivity"
+            android:exported="false" />
         <activity
             android:name=".view.LoginActivity"
             android:exported="true">
@@ -22,9 +37,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight"
-            />
+        <activity
+            android:name=".view.MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
     </application>
 
 </manifest>

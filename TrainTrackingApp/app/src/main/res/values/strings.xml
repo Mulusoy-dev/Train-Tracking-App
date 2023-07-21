@@ -15,4 +15,22 @@
     <string name="train_id_name">Train ID Name</string>
     <string name="update_time">Update Time:</string>
     <string name="update_data_time">Update Data Time</string>
+    <string name="park_state">Park State:</string>
+    <string name="train_parking_state">Train Parking State:</string>
+    <string name="train_emergency">train_emergency</string>
+    <string name="train_emerge">Train_emerge</string>
+    <string name="train_emergency_state">Train Emergency State:</string>
+    <string name="train_traction_state">Train Traction State:</string>
+    <string name="train_traction">Train Traction</string>
+    <string name="train_total_km">Train Total Km:</string>
+    <string name="total_km">Total Km:</string>
+    <string name="pantograph_state">Pantograph State:</string>
+    <string name="pan_state">Pan State:</string>
+    <string name="external_temp">External Temp:</string>
+    <string name="ext_temp">Ext Temp</string>
+    <string name="train_pan_up">Train Pan Up</string>
+    <string name="pan_up">Pan Up</string>
+    <string name="train_pan_down">Train Pan Down</string>
+    <string name="pan_dwn">Pan Dwn</string>
+    <string name="tms_arge">TMS ARGE</string>
 </resources>
